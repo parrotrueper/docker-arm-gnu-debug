@@ -75,3 +75,15 @@ To start a shell in the built image with the current repository mounted at `/wor
 ```bash
 ./scripts/run-container
 ```
+
+### PC Lint
+
+For PC-Lint you need a valid license to include it in your image
+
+Dockerfile-pclint
+
+```shell
+FROM parrotrueper/arm32_fw_debug:latest
+
+COPY ./your-license-file.lic /opt/pclp/
+```

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Exit on error
+set -euo pipefail
+
+#-------------------------------------------
+# Run the test harness. Invoke as "ci/test".
+#-------------------------------------------
+
+# shellcheck source=/dev/null
+. ci/functions.sh
+
+is_pipeline=$(is_ci)
+
+if [[ ${is_pipeline} = "yes" ]]; then
+	info "Test that runs on the pipeline"
+	info "on the pipeline"
+fi
+
+if [[ ${is_pipeline} = "no" ]]; then
+	info "Test that runs on local host"
+	info "on the host"
+fi
+
+info "Tests that runs on the pipeline and on local host"
+info "on pipeline and on the host"
+
+run ./scripts/build
+
+run scripts/host/get-readme-versions.sh

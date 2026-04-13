@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+# Exit on error
+set -euo pipefail
+
+# shellcheck source=/dev/null
+. ci/functions.sh
+
+# shellcheck source=/dev/null
+. .env
+
+# default optional input arguments
+#----------------------------------
+start_location="./"
+
+# Help function
+#--------------
+# shellcheck disable=SC2317  # Don't warn about unreachable commands in this function
+function usage() {
+	cat <<Endofmessage
+
+    Build docker image and run a container
+
+    Use: $0 [-c] [-p <start path>] [-v] [-h]
+
+    optional arguments:
+        -c  clean build, cache will not be used
+
+        -p  path where the container should start default is the current
+            directory
+
+        -v  verbose build
+
+        -h  display this help and exit
+
+Endofmessage
+}
+
+# parse input arguments
+#----------------------
+function funcParseArgs() {
+	while [[ $# -gt 0 ]]; do
+		arg="$1"
+		case ${arg} in
+		-p)
+			start_location="-s $2"
+			shift 2
+			;;
+		-h)
+			usage
+			exit 0
+			;;
+		-*)
+			usage
+			exit 1
+			;;
+		*) break ;;
+
+		esac
+	done
+}
+
+# build the base image
+#---------------------
+function funcBuildBaseImg() {
+	run ci/test
+}
+
+# run container
+#--------------
+function funcRunContainer() {
+	run_cmd="exec docker run"
+	run_cmd+=" --rm"
+	run_cmd+=" --tty"
+	run_cmd+=" --interactive"
+	run_cmd+=" --env TERM=xterm-256color"
+	run_cmd+=" --volume ${start_location}:/workspace/"
+	run_cmd+=" ${DBG_RESULT_IMAGE:?}" # name of the image to use
+	run_cmd+=" /bin/bash"           # our preferred shell
+
+	info "${run_cmd}"
+	run eval "${run_cmd}"
+}
+
+function main() {
+	funcParseArgs "$@"
+	#funcBuildBaseImg
+	funcRunContainer
+}
+
+main "$@"

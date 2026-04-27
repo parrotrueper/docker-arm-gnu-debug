@@ -1,10 +1,10 @@
 # Docker image with GNU ARM none-eabi toolchain and debugging support
 
-`docker pull parrotrueper/arm32_fw_debug:1.0.0`
+`docker pull parrotrueper/arm32_fw_debug:1.1.0`
 
 This repository builds a Docker image for ARM firmware development and debugging.
 It is based on an existing ARM toolchain image and adds debugging support,
-Python tooling, and compatibility libraries.
+Python and Rust tooling, and compatibility libraries.
 
 ## What this project provides
 
@@ -18,36 +18,49 @@ Python tooling, and compatibility libraries.
 
  Name             | Version
  :--              | :--
-GNU Arm none eabi | 15.2.1
-GoogleTest        | 1.17.0
-Gtest-parallel    | cd488bd
+arm-none-eabi-gcc | 15.2.1
+build-essential   | 12.12
+cargo             | 1.95.0
+ccze              | 0.2.1
 clang-format      | 22.1.2
 cmake             | 4.3.1
 cpplint           | 2.0.2
 cppcheck          | 2.17.1
+curl              | 8.14.1
+doctest           | 0.22.6
+doxygen           | 1.9.8
 flawfinder        | 2.0.19
 gcovr             | 8.6
+git               | 2.47.3
+graphviz          | 2.42.4
+FuzzTest          | b73724d
+GoogleTest        | 52eb8108
+Gtest-parallel    | cd488bd
+lcov              | 2.0-1
+libncurses5       | 6.4-4
+libtinfo5         | 6.4-4
 lizard            | 1.21.3
 ninja             | 1.12.1
-openocd           | n/a
+nlohmann-json     | 3.11.3
 numpy             | 2.4.4
+openocd           | 0.12.0
+openpyxl          | 3.1.5
 paho-mqtt         | 2.1.0
+PC-Lint           | 2025 SP1
 pytest            | 9.0.2
 pytest-mqtt       | 0.7.0
 PyYAML            | 6.0.3
 regex             | 2026.3.32
 requests          | 2.33.1
-openpyxl          | 3.1.5
 pyocd             | 0.44.0
+rust              | 1.95.0
 shellcheck        | 0.11.0
 shfmt             | 3.8.0
 ssh               | 10.0p2
+st-util           | 1.8.0
 tar               | 1.35
 wget              | 1.25.0
-libncurses5       | 6.4-4
-libtinfo5         | 6.4-4
-st-util           | v1.8.0
-PC-Lint           | installed - requires license
+zip               | 3.0
 
 ## Build instructions
 

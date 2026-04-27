@@ -5,7 +5,7 @@
 
     },
     "dependencies": {
-        "image": "parrotrueper/arm32_fw_tchain:1.0.0",
+        "image": "parrotrueper/arm32_fw_tchain:1.1.0",
         "repo_name": "docker-arm32-toolchain",
         "url": "git@github.com:parrotrueper",
         "branch": "main",
@@ -14,10 +14,10 @@
         "username": "rabbit"
     },
     "result_image": {
-        "base": "parrotrueper/arm32_fw_tchain:1.0.0",
+        "base": "parrotrueper/arm32_fw_tchain:1.1.0",
         "name": "arm32_fw_debug:latest",
         "hub_tag": "parrotrueper/arm32_fw_debug",
-        "version_tag": "1.0.0",
+        "version_tag": "1.1.0",
         "file": "./dev-docker/Dockerfile",
         "context": "./dev-docker",
         "username": "rabbit"

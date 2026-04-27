@@ -1,4 +1,4 @@
-FROM parrotrueper/arm32_fw_tchain:1.0.0 AS base
+FROM parrotrueper/arm32_fw_tchain:1.1.0 AS base
 USER root
 
 # ARM toolchain dependencies for debugging
